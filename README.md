@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+React Crypto Tracker - RCT
+RCT is a React SPA application to tack the crypto currencies.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🎯 Features
+
+- TBD
 
 ## Available Scripts
 
