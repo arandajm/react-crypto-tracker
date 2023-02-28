@@ -1,5 +1,5 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import CryptoCurrenciesPage from "./components/CryptoCurrenciesPage";
 import ErrorPage from "./components/ErrorPage";
 import HomePage from "./components/HomePage";
 
@@ -7,6 +7,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/cryptocurrencies",
+    element: <CryptoCurrenciesPage />,
     errorElement: <ErrorPage />,
   },
 ]);
