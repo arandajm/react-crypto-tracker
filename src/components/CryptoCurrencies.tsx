@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import api from "../services/api";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Coin } from "../types";
 

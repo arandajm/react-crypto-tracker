@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import CryptoCurrenciesPage from "./components/CryptoCurrenciesPage";
+import CryptoCurrencies from "./components/CryptoCurrencies";
 import ErrorPage from "./components/ErrorPage";
 import HomePage from "./components/HomePage";
+import News from "./components/News";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/cryptocurrencies",
-    element: <CryptoCurrenciesPage />,
+    element: <CryptoCurrencies />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/cryptonews",
+    element: <News />,
     errorElement: <ErrorPage />,
   },
 ]);

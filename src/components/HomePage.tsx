@@ -3,6 +3,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import CryptoCurrencies from "./CryptoCurrencies";
+import News from "./News";
 
 const HomePage: FC = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
@@ -96,6 +97,21 @@ const HomePage: FC = () => {
       </section>
 
       <CryptoCurrencies simplified />
+
+      <section
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <h3>Top 10 Crypto news in the world</h3>
+        <p>
+          <Link to={"/cryptonews"}>Show More</Link>
+        </p>
+      </section>
+
+      <News simplified />
     </div>
   );
 };
