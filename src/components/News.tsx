@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
+import NewsCard from "./NewsCard";
 
 type Props = {
   simplified?: boolean;
@@ -24,33 +25,34 @@ const News: FC<Props> = (props) => {
       }}
     >
       {cryptoNews?.value.map((news: any, index: number) => (
-        <div
-          key={index}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+        // <div
+        //   key={index}
+        //   style={{
+        //     display: "flex",
+        //     flexDirection: "column",
+        //     alignItems: "center",
 
-            border: "1px solid black",
-            gap: "5px",
-          }}
-        >
-          <img
-            style={{ width: "100px", height: "100px" }}
-            src={news?.image?.thumbnail.contentUrl}
-            alt="news-img"
-          />
-          <p>{news.name}</p>
-          <p>{news.description}</p>
-          <p>
-            {new Intl.DateTimeFormat("en-US", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            }).format(new Date(news.datePublished))}
-          </p>
-        </div>
+        //     border: "1px solid black",
+        //     gap: "5px",
+        //   }}
+        // >
+        //   <img
+        //     style={{ width: "100px", height: "100px" }}
+        //     src={news?.image?.thumbnail.contentUrl}
+        //     alt="news-img"
+        //   />
+        //   <p>{news.name}</p>
+        //   <p>{news.description}</p>
+        //   <p>
+        //     {new Intl.DateTimeFormat("en-US", {
+        //       weekday: "long",
+        //       year: "numeric",
+        //       month: "long",
+        //       day: "numeric",
+        //     }).format(new Date(news.datePublished))}
+        //   </p>
+        // </div>
+        <NewsCard news={news} />
       ))}
     </div>
   );

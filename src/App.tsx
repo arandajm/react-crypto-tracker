@@ -1,35 +1,35 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import CryptoCurrencies from "./components/CryptoCurrencies";
-import ErrorPage from "./components/ErrorPage";
-import HomePage from "./components/HomePage";
-import News from "./components/News";
+import { FC, lazy } from "react";
+import { Outlet, Route, Routes } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/cryptocurrencies",
-    element: <CryptoCurrencies />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/cryptonews",
-    element: <News />,
-    errorElement: <ErrorPage />,
-  },
-]);
+const CryptoCurrencies = lazy(() => import("./components/CryptoCurrencies"));
+const ErrorPage = lazy(() => import("./components/ErrorPage"));
+const Header = lazy(() => import("./components/Header"));
+const HomePage = lazy(() => import("./components/HomePage"));
+const News = lazy(() => import("./components/News"));
+
+const Layout: FC = () => {
+  return (
+    <div>
+      {/* A "layout route" is a good place to put markup you want to
+          share across all the pages on your site, like navigation. */}
+      <Header />
+      <Outlet />
+    </div>
+  );
+};
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1>Crypto tracker</h1>
-      </header>
       <main>
-        <RouterProvider router={router} />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="cryptocurrencies" element={<CryptoCurrencies />} />
+            <Route path="cryptonews" element={<News />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
+        </Routes>
       </main>
     </div>
   );

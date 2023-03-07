@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Coin } from "../types";
+import CryptoCard from "./CryptoCard";
 
 type Props = {
   simplified?: boolean;
@@ -46,31 +47,7 @@ const CryptoCurrencies: FC<Props> = (props) => {
         }}
       >
         {cryptos?.map((crypto: Coin) => (
-          <div
-            key={crypto.uuid}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-
-              border: "1px solid black",
-              gap: "5px",
-            }}
-          >
-            <img
-              style={{ width: "60px", height: "60px" }}
-              src={crypto.iconUrl}
-              alt="icon"
-            />
-            <p>{crypto.name}</p>
-            <p>{crypto.symbol}</p>
-            <p>
-              {Number(crypto.price).toLocaleString("US", {
-                style: "currency",
-                currency: "USD",
-              })}
-            </p>
-          </div>
+          <CryptoCard crypto={crypto} />
         ))}
       </div>
     </div>
